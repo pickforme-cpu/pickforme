@@ -19,7 +19,7 @@
                 <span class="group-hover:-translate-x-1 transition-transform">←</span> 
                 <span class="font-bold">PickForMe<span class="text-indigo-400">.help</span></span>
             </a>
-            <span class="text-xs font-bold text-purple-500 border border-purple-500/30 px-2 py-1 rounded bg-purple-500/10">GIFT</span>
+            <span class="text-xs font-bold text-purple-500 border border-purple-500/30 px-2 py-1 rounded bg-purple-500/10">AI GIFT</span>
         </div>
     </nav>
 
@@ -31,51 +31,40 @@
                 Perfect Gift, <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Zero Stress.</span>
             </h2>
             <p class="text-slate-400 text-lg">
-                Tell us who it's for, and we'll find something they actually want.
+                Tell AI who it's for, and get a tailored idea instantly.
             </p>
         </div>
 
         <div class="w-full bg-slate-800 p-6 rounded-3xl shadow-xl border border-slate-700 mb-8">
             <div class="grid grid-cols-1 gap-4 mb-6">
-                
                 <div class="text-left">
                     <label class="block text-slate-400 text-xs uppercase tracking-wide mb-2 font-bold ml-1">Who is it for?</label>
-                    <div class="relative">
-                        <select id="recipientSelect" class="w-full bg-slate-900 border border-slate-600 rounded-xl p-4 text-white focus:ring-2 focus:ring-purple-500 outline-none appearance-none transition cursor-pointer">
-                            <option value="partner_f">Girlfriend / Wife</option>
-                            <option value="partner_m">Boyfriend / Husband</option>
-                            <option value="mom">Mom / Mother-in-law</option>
-                            <option value="dad">Dad / Father-in-law</option>
-                            <option value="friend_f">Female Friend / Sister</option>
-                            <option value="friend_m">Male Friend / Brother</option>
-                            <option value="child">Kid / Child</option>
-                            <option value="coworker">Coworker / Boss</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                        </div>
-                    </div>
+                    <select id="recipientSelect" class="w-full bg-slate-900 border border-slate-600 rounded-xl p-4 text-white focus:ring-2 focus:ring-purple-500 outline-none appearance-none transition cursor-pointer">
+                        <option value="Girlfriend / Wife">Girlfriend / Wife</option>
+                        <option value="Boyfriend / Husband">Boyfriend / Husband</option>
+                        <option value="Mom / Mother-in-law">Mom / Mother-in-law</option>
+                        <option value="Dad / Father-in-law">Dad / Father-in-law</option>
+                        <option value="Best Friend (Female)">Best Friend (Female)</option>
+                        <option value="Best Friend (Male)">Best Friend (Male)</option>
+                        <option value="Teenager">Teenager</option>
+                        <option value="Coworker">Coworker</option>
+                    </select>
                 </div>
 
                 <div class="text-left">
                     <label class="block text-slate-400 text-xs uppercase tracking-wide mb-2 font-bold ml-1">Age Group</label>
-                    <div class="relative">
-                        <select id="ageSelect" class="w-full bg-slate-900 border border-slate-600 rounded-xl p-4 text-white focus:ring-2 focus:ring-purple-500 outline-none appearance-none transition cursor-pointer">
-                            <option value="child">Kid (Under 12)</option>
-                            <option value="teen">Teen (13-19)</option>
-                            <option value="young_adult" selected>Young Adult (20-30)</option>
-                            <option value="adult">Adult (30-50)</option>
-                            <option value="senior">Senior (50+)</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
-                        </div>
-                    </div>
+                    <select id="ageSelect" class="w-full bg-slate-900 border border-slate-600 rounded-xl p-4 text-white focus:ring-2 focus:ring-purple-500 outline-none appearance-none transition cursor-pointer">
+                        <option value="Child (under 12)">Child (Under 12)</option>
+                        <option value="Teen (13-19)">Teen (13-19)</option>
+                        <option value="Young Adult (20-30)" selected>Young Adult (20-30)</option>
+                        <option value="Adult (30-50)">Adult (30-50)</option>
+                        <option value="Senior (50+)">Senior (50+)</option>
+                    </select>
                 </div>
             </div>
 
-            <button onclick="findGift()" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-4 rounded-xl text-lg transition shadow-lg shadow-purple-500/20 active:scale-95 flex justify-center items-center gap-2">
-                <span>🎁 Find the Perfect Gift</span>
+            <button onclick="findGift()" id="findBtn" class="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold py-4 rounded-xl text-lg transition shadow-lg shadow-purple-500/20 active:scale-95 flex justify-center items-center gap-2">
+                <span>🎁 Ask AI for a Gift Idea</span>
             </button>
         </div>
 
@@ -84,18 +73,18 @@
                 Top Recommendation
             </div>
             
-            <h3 id="giftTitle" class="text-2xl md:text-3xl font-bold mb-3 text-white leading-tight">Weighted Blanket</h3>
+            <h3 id="giftTitle" class="text-2xl md:text-3xl font-bold mb-3 text-white leading-tight">Loading...</h3>
             <p id="giftDesc" class="text-slate-400 text-sm mb-6 leading-relaxed">
-                Like a warm hug. Perfect for anyone who needs better sleep or stress relief.
+                AI is searching for the perfect item...
             </p>
 
             <a id="amazonLink" href="#" target="_blank" class="block w-full bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-500 hover:to-yellow-400 text-white font-bold py-3 rounded-xl transition shadow-lg transform active:scale-95 border border-yellow-400/20">
-                🛒 Buy on Amazon
+                🛒 Search on Amazon
             </a>
             
             <div class="mt-4">
                 <button onclick="findGift()" class="text-purple-400 hover:text-purple-300 text-sm underline p-2">
-                    Not good? Show another idea
+                    Not quite right? Show another
                 </button>
             </div>
         </div>
@@ -105,112 +94,71 @@
     <footer class="text-center text-slate-600 py-8 border-t border-slate-800 text-sm mt-auto bg-slate-900">
         <p class="mb-2 font-medium text-slate-500">&copy; 2026 PickForMe.help</p>
         <p class="text-xs max-w-md mx-auto px-4 leading-relaxed opacity-70">
-            Finding gifts made easy.<br>
+            Powered by Cloudflare Workers AI.<br>
             As an Amazon Associate we earn from qualifying purchases.
         </p>
     </footer>
 
     <script>
-        // 🎁 礼物数据库：根据身份(recipient)和年龄(age)打标签
-        // 标签说明: 
-        // Recipient: partner_f, partner_m, mom, dad, friend_f, friend_m, child, coworker
-        // Age: child, teen, young_adult, adult, senior, all
-        
-        const gifts = [
-            // --- Tech / Gadgets (通用) ---
-            { title: "Noise Cancelling Headphones", desc: "Sony or Bose. A lifesaver for commuters, students, or anyone who wants peace and quiet.", tags: ["partner_m", "partner_f", "friend_m", "dad", "teen", "young_adult", "adult"] },
-            { title: "Portable Bluetooth Speaker", desc: "JBL or Bose. Waterproof is best. Perfect for showers, beach days, or cooking.", tags: ["friend_m", "friend_f", "teen", "young_adult", "adult", "child"] },
-            { title: "Kindle Paperwhite", desc: "For the bookworm. Holds thousands of books and waterproof.", tags: ["mom", "dad", "partner_f", "partner_m", "senior", "adult", "young_adult"] },
-            { title: "Instax Mini Camera", desc: "Instant polaroid photos. Fun for parties and memories.", tags: ["teen", "young_adult", "friend_f", "partner_f", "child"] },
-            { title: "Digital Photo Frame", desc: "Upload photos remotely via WiFi. The perfect gift for parents or grandparents to see the kids.", tags: ["mom", "dad", "senior", "partner_f"] },
-            
-            // --- Home / Cozy (居家/舒适) ---
-            { title: "Weighted Blanket", desc: "Proven to reduce anxiety and improve sleep. Like a constant hug.", tags: ["mom", "partner_f", "friend_f", "adult", "senior", "teen"] },
-            { title: "Premium Robe", desc: "A plush, hotel-quality bathrobe. Something they'd never buy themselves but love using.", tags: ["mom", "dad", "partner_f", "partner_m", "senior", "adult"] },
-            { title: "Sunrise Alarm Clock", desc: "Wakes you up gradually with light instead of a loud alarm. Game changer for mornings.", tags: ["partner_f", "partner_m", "teen", "young_adult", "friend_f"] },
-            { title: "Scented Candle Set", desc: "High-quality soy candles (like Yankee or Diptyque). A classic for a reason.", tags: ["mom", "friend_f", "coworker", "adult", "senior"] },
-            { title: "Air Fryer", desc: "The kitchen gadget everyone actually uses. Makes reheating leftovers amazing.", tags: ["young_adult", "adult", "mom", "dad", "friend_m"] },
-            
-            // --- For Men (Partner/Dad/Friend) ---
-            { title: "Massage Gun", desc: "Theragun or Hypervolt. Perfect for post-workout or just back pain relief.", tags: ["dad", "partner_m", "friend_m", "adult", "senior"] },
-            { title: "Craft Beer Brewing Kit", desc: "A fun weekend project. Makes a gallon of their own beer.", tags: ["partner_m", "dad", "friend_m", "adult"] },
-            { title: "Classic Leather Wallet", desc: "A high-quality minimalist leather wallet. Simple and practical.", tags: ["dad", "partner_m", "friend_m", "adult", "senior", "teen"] },
-            { title: "Beard Grooming Kit", desc: "Oils, balms, and combs. Essential for the bearded man.", tags: ["partner_m", "friend_m", "young_adult", "adult"] },
-            
-            // --- For Women (Partner/Mom/Friend) ---
-            { title: "Silk Pillowcase", desc: "Better for hair and skin. Feels luxurious and cooling.", tags: ["mom", "partner_f", "friend_f", "young_adult", "adult", "senior"] },
-            { title: "Skincare Subscription Box", desc: "Or a set of high-end sheet masks. Pampering in a box.", tags: ["partner_f", "friend_f", "teen", "young_adult"] },
-            { title: "Personalized Necklace", desc: "A simple gold bar or initial necklace. Thoughtful and stylish.", tags: ["partner_f", "friend_f", "mom", "young_adult", "adult"] },
-            { title: "Bath Bombs Set", desc: "Lush style bath bombs. Fun, colorful, and relaxing.", tags: ["teen", "child", "friend_f", "young_adult"] },
-            
-            // --- Kids / Teens ---
-            { title: "Lego Set", desc: "Star Wars, Harry Potter, or Technic. Classic fun for any age, honestly.", tags: ["child", "teen", "friend_m", "young_adult"] },
-            { title: "LED Strip Lights", desc: "Remote controlled color changing lights for their room. TikTok famous.", tags: ["teen", "child", "young_adult"] },
-            { title: "Science Experiment Kit", desc: "Make slime, volcanos, or crystals. Educational and messy fun.", tags: ["child"] },
-            { title: "Nintendo Switch Game", desc: "Mario Kart or Zelda. Safe bet for gamers.", tags: ["child", "teen", "young_adult"] },
-            
-            // --- Coworker / Generic ---
-            { title: "Yeti Tumbler", desc: "Keeps coffee hot for hours. Indestructible and practical.", tags: ["coworker", "dad", "mom", "adult", "senior"] },
-            { title: "Succulent Plant Pot", desc: "Hard to kill plants. Cute desk decoration.", tags: ["coworker", "friend_f", "young_adult"] },
-            { title: "Gourmet Coffee Sampler", desc: "A selection of beans from around the world.", tags: ["coworker", "dad", "adult"] }
-        ];
+        // ✅ 你的 Worker 地址
+        const WORKER_URL = "https://purple-waterfall-3d91.talvicraft.workers.dev"; 
 
-        function findGift() {
+        async function findGift() {
             const recipient = document.getElementById('recipientSelect').value;
             const age = document.getElementById('ageSelect').value;
+            const btn = document.getElementById('findBtn');
+            const card = document.getElementById('resultCard');
             
-            // 筛选逻辑：礼物的 tags 必须包含 recipient，或者符合通用逻辑
-            // 并且礼物的 tags 必须包含 age，或者 tags 包含 'all'
-            
-            let matches = gifts.filter(gift => {
-                const hasRecipient = gift.tags.includes(recipient);
-                
-                // 年龄匹配稍微宽松一点
-                // 如果礼物适合 'adult'，通常也适合 'senior' 或 'young_adult'
-                // 这里简单处理：只要 tag 里有选中的 age 即可
-                const hasAge = gift.tags.includes(age);
+            // UI 加载状态
+            btn.innerHTML = '<span>🤔 Thinking...</span>';
+            btn.disabled = true;
+            btn.classList.add('opacity-75');
+            card.classList.add('hidden');
 
-                return hasRecipient && hasAge;
-            });
+            // 构造指令
+            const prompt = `Suggest 1 specific, tangible gift idea for a ${age} ${recipient}. Avoid generic answers like "Cash". Return ONLY a raw JSON array of objects with keys: "title" and "desc" (max 15 words). Example: [{"title": "Weighted Blanket", "desc": "Great for stress relief."}]`;
 
-            // 如果匹配太少（少于1个），尝试放宽条件：只匹配 Recipient
-            if (matches.length === 0) {
-                matches = gifts.filter(gift => gift.tags.includes(recipient));
+            try {
+                const response = await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt })
+                });
+
+                if (!response.ok) throw new Error('AI Error');
+                const data = await response.json();
+
+                if (data && data.length > 0) {
+                    displayGift(data[0]);
+                } else {
+                    throw new Error("No data");
+                }
+            } catch (error) {
+                console.error(error);
+                // 失败时用本地数据兜底，防止用户看到空白
+                displayGift({ title: "Amazon Gift Card", desc: "When in doubt, let them choose. AI is currently sleeping." });
+            } finally {
+                btn.innerHTML = '<span>🎁 Ask AI for a Gift Idea</span>';
+                btn.disabled = false;
+                btn.classList.remove('opacity-75');
             }
-            
-            // 如果还是没有（极少情况），从所有礼物里随机
-            if (matches.length === 0) {
-                matches = gifts;
-            }
-
-            // 随机取一个
-            const pick = matches[Math.floor(Math.random() * matches.length)];
-            
-            displayGift(pick);
         }
 
         function displayGift(gift) {
             const card = document.getElementById('resultCard');
             
-            // 简单的切换动画
-            card.classList.add('hidden');
-            card.classList.remove('animate-pop');
-
             document.getElementById('giftTitle').textContent = gift.title;
             document.getElementById('giftDesc').textContent = gift.desc;
             
-            // 生成 Amazon 搜索链接 (带 Affiliate Tag)
-            // 替换 'your-tag-20' 为你的 Amazon Associate ID
+            // 你的 Amazon Tag
             const affiliateTag = 'your-tag-20'; 
             const amazonUrl = `https://www.amazon.com/s?k=${encodeURIComponent(gift.title)}&tag=${affiliateTag}`;
             document.getElementById('amazonLink').href = amazonUrl;
 
-            setTimeout(() => {
-                card.classList.remove('hidden');
-                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                void card.offsetWidth; 
-                card.classList.add('animate-pop');
-            }, 100);
+            card.classList.remove('hidden');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            void card.offsetWidth; 
+            card.classList.add('animate-pop');
         }
     </script>
 </body>
