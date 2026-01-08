@@ -4,95 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PickForMe.help | Cure Analysis Paralysis</title>
-    <meta name="description" content="Stop overthinking. Use AI and logic tools to decide what to watch, eat, do, or buy. Free decision-making tools.">
+    <meta name="description" content="Stop overthinking. Use AI tools to decide what to watch, eat, or do.">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .animate-fade-in { animation: fadeIn 0.5s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .card-hover:hover { transform: translateY(-5px); }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* 隐藏滚动条但允许滚动 */
+        body::-webkit-scrollbar { width: 8px; }
+        body::-webkit-scrollbar-track { background: #0f172a; }
+        body::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
         * { -webkit-tap-highlight-color: transparent; }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-50 min-h-screen font-sans flex flex-col selection:bg-indigo-500 selection:text-white">
+<body class="bg-[#0B1120] text-slate-50 min-h-screen font-sans flex flex-col selection:bg-indigo-500 selection:text-white overflow-x-hidden">
 
-    <nav class="w-full p-4 md:p-6 border-b border-slate-800 bg-slate-900/95 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight hover:opacity-80 transition">
-                <span>⚡ PickForMe<span class="text-indigo-400">.help</span></span>
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full blur-[120px] opacity-50"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] opacity-50"></div>
+    </div>
+
+    <nav class="w-full px-6 py-5 border-b border-white/5 bg-[#0B1120]/80 backdrop-blur-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 text-xl font-bold tracking-tight hover:opacity-80 transition group">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">⚡ PickForMe</span>
             </a>
-            <div class="flex gap-4 text-sm font-medium">
-                <a href="about.html" class="text-slate-400 hover:text-white transition">About</a>
+            <div class="flex gap-6 text-sm font-medium">
+                <a href="about.html" class="text-slate-400 hover:text-white transition hover:scale-105 transform">About</a>
             </div>
         </div>
     </nav>
 
-    <main class="flex-grow w-full max-w-6xl mx-auto px-4 py-12 md:py-20 text-center">
+    <main class="flex-grow w-full max-w-7xl mx-auto px-6 py-16 md:py-24 text-center">
         
-        <div class="max-w-3xl mx-auto mb-16 animate-fade-in">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
-                Stop <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Overthinking.</span>
+        <div class="max-w-3xl mx-auto mb-20 animate-fade-in">
+            <span class="inline-block py-1 px-3 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-bold tracking-wider mb-6">
+                ✨ AI POWERED DECISION TOOLS
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-8 leading-tight tracking-tight">
+                Stop <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Overthinking.</span>
             </h1>
-            <p class="text-xl md:text-2xl text-slate-400 leading-relaxed">
-                Decision fatigue is real. Delegate your micro-choices to our AI and algorithms so you can focus on what matters.
+            <p class="text-xl md:text-2xl text-slate-400 leading-relaxed max-w-2xl mx-auto">
+                Decision fatigue is real. Let our <span class="text-white font-medium">AI & Algorithms</span> make the choice for you, so you can focus on living.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in" style="animation-delay: 0.2s; animation-fill-mode: backwards;">
             
-            <a href="movie.html" class="group bg-slate-800 hover:bg-slate-750 border border-slate-700 hover:border-indigo-500 p-8 rounded-3xl transition-all duration-300 card-hover text-left relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl">🎬</div>
-                <div class="inline-block p-3 bg-indigo-500/10 rounded-xl mb-4 text-2xl group-hover:scale-110 transition-transform duration-300">🍿</div>
-                <h3 class="text-2xl font-bold mb-2 group-hover:text-indigo-400 transition">Movie Picker</h3>
-                <p class="text-slate-400 text-sm">Don't scroll Netflix for an hour. Let TMDB data pick a highly-rated movie for you.</p>
+            <a href="movie.html" class="group relative overflow-hidden rounded-[2rem] bg-slate-800/40 p-8 border border-white/5 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/10 text-left h-full flex flex-col">
+                <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-indigo-500/20 blur-3xl group-hover:bg-indigo-500/30 transition-all duration-500"></div>
+                
+                <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-indigo-500/20 text-4xl shadow-inner shadow-white/10 group-hover:scale-110 transition-transform duration-300 border border-indigo-500/20">
+                    🍿
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-indigo-300 transition-colors">Movie Picker</h3>
+                <p class="text-slate-400 text-sm leading-relaxed flex-grow">Don't scroll Netflix for an hour. Let TMDB data pick a highly-rated movie for you.</p>
+                
+                <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    Find a Movie <span class="ml-2">→</span>
+                </div>
             </a>
 
-            <a href="food.html" class="group bg-slate-800 hover:bg-slate-750 border border-slate-700 hover:border-green-500 p-8 rounded-3xl transition-all duration-300 card-hover text-left relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl">🥦</div>
-                <div class="inline-block p-3 bg-green-500/10 rounded-xl mb-4 text-2xl group-hover:scale-110 transition-transform duration-300">🍳</div>
-                <h3 class="text-2xl font-bold mb-2 group-hover:text-green-400 transition">AI Chef</h3>
-                <p class="text-slate-400 text-sm">Enter 3 ingredients, and our AI will invent a recipe instantly. Or just pick a random meal.</p>
+            <a href="food.html" class="group relative overflow-hidden rounded-[2rem] bg-slate-800/40 p-8 border border-white/5 hover:border-emerald-500/50 hover:bg-slate-800/60 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/10 text-left h-full flex flex-col">
+                <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-emerald-500/20 blur-3xl group-hover:bg-emerald-500/30 transition-all duration-500"></div>
+                
+                <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-500/20 text-4xl shadow-inner shadow-white/10 group-hover:scale-110 transition-transform duration-300 border border-emerald-500/20">
+                    🍳
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-emerald-300 transition-colors">AI Chef</h3>
+                <p class="text-slate-400 text-sm leading-relaxed flex-grow">Enter 3 ingredients, and our Llama-3 AI will invent a creative recipe instantly.</p>
+                
+                <div class="mt-6 flex items-center text-emerald-400 text-sm font-bold opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    Cook Something <span class="ml-2">→</span>
+                </div>
             </a>
 
-            <a href="names.html" class="group bg-slate-800 hover:bg-slate-750 border border-slate-700 hover:border-blue-500 p-8 rounded-3xl transition-all duration-300 card-hover text-left relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl">🧙‍♂️</div>
-                <div class="inline-block p-3 bg-blue-500/10 rounded-xl mb-4 text-2xl group-hover:scale-110 transition-transform duration-300">🧠</div>
-                <h3 class="text-2xl font-bold mb-2 group-hover:text-blue-400 transition">AI Names</h3>
-                <p class="text-slate-400 text-sm">Startups, RPG characters, pets, or planets. Powered by Llama-3 AI for unlimited creativity.</p>
+            <a href="names.html" class="group relative overflow-hidden rounded-[2rem] bg-slate-800/40 p-8 border border-white/5 hover:border-blue-500/50 hover:bg-slate-800/60 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 text-left h-full flex flex-col">
+                <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-blue-500/20 blur-3xl group-hover:bg-blue-500/30 transition-all duration-500"></div>
+                
+                <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-500/20 text-4xl shadow-inner shadow-white/10 group-hover:scale-110 transition-transform duration-300 border border-blue-500/20">
+                    🧙‍♂️
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-blue-300 transition-colors">AI Names</h3>
+                <p class="text-slate-400 text-sm leading-relaxed flex-grow">Startups, RPG characters, pets, or planets. Unlimited creativity powered by AI.</p>
+                
+                <div class="mt-6 flex items-center text-blue-400 text-sm font-bold opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    Generate Names <span class="ml-2">→</span>
+                </div>
             </a>
 
-            <a href="gift.html" class="group bg-slate-800 hover:bg-slate-750 border border-slate-700 hover:border-purple-500 p-8 rounded-3xl transition-all duration-300 card-hover text-left relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl">🎁</div>
-                <div class="inline-block p-3 bg-purple-500/10 rounded-xl mb-4 text-2xl group-hover:scale-110 transition-transform duration-300">💝</div>
-                <h3 class="text-2xl font-bold mb-2 group-hover:text-purple-400 transition">Gift Finder</h3>
-                <p class="text-slate-400 text-sm">Find the perfect gift by age and relationship. Curated ideas that people actually want.</p>
+            <a href="gift.html" class="group relative overflow-hidden rounded-[2rem] bg-slate-800/40 p-8 border border-white/5 hover:border-pink-500/50 hover:bg-slate-800/60 transition-all duration-500 hover:shadow-2xl hover:shadow-pink-500/10 text-left h-full flex flex-col">
+                <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-pink-500/20 blur-3xl group-hover:bg-pink-500/30 transition-all duration-500"></div>
+                
+                <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-pink-500/20 text-4xl shadow-inner shadow-white/10 group-hover:scale-110 transition-transform duration-300 border border-pink-500/20">
+                    🎁
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-pink-300 transition-colors">AI Gift Finder</h3>
+                <p class="text-slate-400 text-sm leading-relaxed flex-grow">Don't guess. Tell AI the age and relationship, and get perfect gift ideas.</p>
+                
+                <div class="mt-6 flex items-center text-pink-400 text-sm font-bold opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    Find a Gift <span class="ml-2">→</span>
+                </div>
             </a>
 
-            <a href="priority.html" class="group bg-slate-800 hover:bg-slate-750 border border-slate-700 hover:border-teal-500 p-8 rounded-3xl transition-all duration-300 card-hover text-left relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl">✅</div>
-                <div class="inline-block p-3 bg-teal-500/10 rounded-xl mb-4 text-2xl group-hover:scale-110 transition-transform duration-300">📊</div>
-                <h3 class="text-2xl font-bold mb-2 group-hover:text-teal-400 transition">Priority Helper</h3>
-                <p class="text-slate-400 text-sm">Overwhelmed? Use the Eisenhower Matrix to decide what to do now, schedule, or delete.</p>
+            <a href="priority.html" class="group relative overflow-hidden rounded-[2rem] bg-slate-800/40 p-8 border border-white/5 hover:border-teal-500/50 hover:bg-slate-800/60 transition-all duration-500 hover:shadow-2xl hover:shadow-teal-500/10 text-left h-full flex flex-col">
+                <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-teal-500/20 blur-3xl group-hover:bg-teal-500/30 transition-all duration-500"></div>
+                
+                <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-500/20 text-4xl shadow-inner shadow-white/10 group-hover:scale-110 transition-transform duration-300 border border-teal-500/20">
+                    ✅
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-teal-300 transition-colors">Priority Helper</h3>
+                <p class="text-slate-400 text-sm leading-relaxed flex-grow">Overwhelmed? Use the Eisenhower Matrix to decide what to do, schedule, or delete.</p>
+                
+                <div class="mt-6 flex items-center text-teal-400 text-sm font-bold opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    Organize Tasks <span class="ml-2">→</span>
+                </div>
             </a>
 
-            <a href="date.html" class="group bg-slate-800 hover:bg-slate-750 border border-slate-700 hover:border-pink-500 p-8 rounded-3xl transition-all duration-300 card-hover text-left relative overflow-hidden">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition text-6xl">🥂</div>
-                <div class="inline-block p-3 bg-pink-500/10 rounded-xl mb-4 text-2xl group-hover:scale-110 transition-transform duration-300">❤️</div>
-                <h3 class="text-2xl font-bold mb-2 group-hover:text-pink-400 transition">Date Ideas</h3>
-                <p class="text-slate-400 text-sm">Stuck in a rut? Find fun, romantic, or chill date night ideas based on your vibe.</p>
+            <a href="date.html" class="group relative overflow-hidden rounded-[2rem] bg-slate-800/40 p-8 border border-white/5 hover:border-rose-500/50 hover:bg-slate-800/60 transition-all duration-500 hover:shadow-2xl hover:shadow-rose-500/10 text-left h-full flex flex-col">
+                <div class="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-rose-500/20 blur-3xl group-hover:bg-rose-500/30 transition-all duration-500"></div>
+                
+                <div class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-500/20 text-4xl shadow-inner shadow-white/10 group-hover:scale-110 transition-transform duration-300 border border-rose-500/20">
+                    🥂
+                </div>
+                <h3 class="text-2xl font-bold mb-3 text-white group-hover:text-rose-300 transition-colors">AI Date Ideas</h3>
+                <p class="text-slate-400 text-sm leading-relaxed flex-grow">Stuck in a rut? Find fun, romantic, or chill date night ideas based on your vibe.</p>
+                
+                <div class="mt-6 flex items-center text-rose-400 text-sm font-bold opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    Plan a Date <span class="ml-2">→</span>
+                </div>
             </a>
 
         </div>
 
     </main>
 
-    <footer class="text-center text-slate-600 py-12 border-t border-slate-800 text-sm bg-slate-900 mt-auto">
-        <div class="flex justify-center gap-6 mb-4 font-medium">
-            <a href="about.html" class="hover:text-slate-400 transition">About Us</a>
-            <a href="privacy.html" class="hover:text-slate-400 transition">Privacy Policy</a>
-            <a href="terms.html" class="hover:text-slate-400 transition">Terms of Service</a>
+    <footer class="text-center text-slate-500 py-12 border-t border-white/5 text-sm bg-[#0B1120] mt-auto">
+        <div class="flex justify-center gap-6 mb-6 font-medium">
+            <a href="about.html" class="hover:text-white transition">About Us</a>
+            <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+            <a href="terms.html" class="hover:text-white transition">Terms of Service</a>
         </div>
-        <p class="mb-2 font-medium text-slate-500">&copy; 2026 PickForMe.help</p>
-        <p class="text-xs max-w-md mx-auto px-4 leading-relaxed opacity-60">
+        <p class="mb-3 font-medium opacity-60">&copy; 2026 PickForMe.help</p>
+        <p class="text-xs max-w-md mx-auto px-4 leading-relaxed opacity-40">
             We simplify your daily decisions. <br>
             As an Amazon Associate we earn from qualifying purchases.
         </p>
