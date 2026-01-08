@@ -83,8 +83,7 @@
     </footer>
 
     <script>
-        // *** 你的 Universal Worker 地址 ***
-        // 确保你的 Worker 已经更新为“万能通用版”代码
+        // *** 你的万能 Worker 地址 ***
         const WORKER_URL = "https://purple-waterfall-3d91.talvicraft.workers.dev"; 
 
         async function generateNames() {
@@ -101,10 +100,10 @@
             resultArea.innerHTML = '';
             resultArea.classList.remove('hidden');
 
-            // 2. 准备推广链接
+            // 2. 准备主题描述和推广链接
+            let topicDesc = "";
             let amazonLink = "";
             let amazonText = "";
-            let topicDesc = "";
 
             if (category === 'fantasy') {
                 topicDesc = "Fantasy RPG Character names (Elvish, Orcish, or Dwarven style)";
@@ -132,20 +131,21 @@
                 amazonLink = "https://www.amazon.com/s?k=comic+books";
             }
 
-            // 3. 构造给万能 Worker 的指令 (Prompt)
+            // 3. 【关键修改】构造给万能 Worker 的 Prompt 指令
+            // 之前的代码发的是 {topic}, 现在我们发 {prompt}
             const prompt = `Generate 6 creative, unique ${topicDesc}. Return ONLY a raw JSON array of strings. No markdown, no numbering. Example format: ["Name1", "Name2"]`;
 
             try {
-                // 4. 发送 Universal Prompt
+                // 4. 发送请求
                 const response = await fetch(WORKER_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ prompt: prompt }) // 注意：这里发的是 prompt，不是 topic
+                    body: JSON.stringify({ prompt: prompt }) // ✅ 这里已经适配了你的新 Worker
                 });
 
                 if (!response.ok) throw new Error('AI Error');
 
-                const names = await response.json(); // 期望得到 ["Name1", "Name2"...]
+                const names = await response.json();
 
                 // 5. 渲染结果
                 if (Array.isArray(names) && names.length > 0) {
@@ -163,7 +163,7 @@
 
                     // 更新底部广告
                     promoAnchor.textContent = amazonText;
-                    promoAnchor.href = amazonLink + "&tag=your-tag-20"; // 记得换成你的 Tag
+                    promoAnchor.href = amazonLink + "&tag=your-tag-20";
                     promoDiv.classList.remove('hidden');
                 } else {
                     throw new Error("Invalid AI response");
@@ -173,11 +173,10 @@
                 console.error(error);
                 resultArea.innerHTML = `
                     <div class="col-span-1 md:col-span-2 text-red-400 bg-red-900/20 p-4 rounded-xl border border-red-900/50">
-                        ⚠️ AI is taking a nap. Please try again in a few seconds.<br>
+                        ⚠️ AI is taking a nap (or connection failed). <br>
                         <span class="text-xs opacity-70">Error: ${error.message}</span>
                     </div>`;
             } finally {
-                // 6. 恢复按钮状态
                 btn.innerHTML = `<span>✨ Ask AI to Generate</span>`;
                 btn.disabled = false;
                 btn.classList.remove('opacity-75', 'cursor-not-allowed');
