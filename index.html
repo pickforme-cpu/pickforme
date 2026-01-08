@@ -6,18 +6,17 @@
     <title>PickForMe.help | The Cure for Decision Paralysis</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 移动端点击时的按压反馈 */
+        /* 移动端点击反馈 */
         .card-hover:active {
             transform: scale(0.98);
         }
-        /* 桌面端的悬停上浮效果 */
+        /* 桌面端悬停效果 */
         @media (min-width: 768px) {
             .card-hover:hover {
                 transform: translateY(-5px);
                 box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
             }
         }
-        /* 禁止文字被长按选中，提升App感 (仅针对交互元素) */
         .no-select {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -51,7 +50,7 @@
                 Don't Decide.<br>Just Click.
             </h1>
             <p class="text-lg md:text-xl text-slate-400 mb-8 max-w-xl mx-auto leading-relaxed">
-                Life is full of tough choices. Let our algorithms handle the small stuff so you can focus on the big stuff.
+                Life is full of tough choices. Let our algorithms handle the small stuff.
             </p>
         </div>
     </header>
@@ -61,10 +60,9 @@
 
             <a href="movie.html" class="block bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-indigo-500 transition duration-300 card-hover group relative overflow-hidden backdrop-blur-sm no-select">
                 <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                
                 <div class="flex items-center justify-between mb-4 relative z-10">
                     <span class="text-4xl filter drop-shadow-lg">🎬</span>
-                    <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-1 rounded-full tracking-wide shadow-lg shadow-indigo-500/30">POPULAR</span>
+                    <span class="bg-indigo-600 text-white text-[10px] font-bold px-2 py-1 rounded-full tracking-wide shadow-lg shadow-indigo-500/30">HOT</span>
                 </div>
                 <h3 class="text-lg font-bold mb-2 text-white group-hover:text-indigo-300 transition relative z-10">Movie Picker</h3>
                 <p class="text-slate-400 text-sm leading-relaxed relative z-10">
@@ -74,7 +72,6 @@
 
             <a href="date.html" class="block bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-pink-500 transition duration-300 card-hover group relative overflow-hidden backdrop-blur-sm no-select">
                 <div class="absolute inset-0 bg-gradient-to-br from-pink-600/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
-                
                 <div class="flex items-center justify-between mb-4 relative z-10">
                     <span class="text-4xl filter drop-shadow-lg">💘</span>
                     <span class="bg-pink-600 text-white text-[10px] font-bold px-2 py-1 rounded-full tracking-wide shadow-lg shadow-pink-500/30">NEW</span>
@@ -85,54 +82,61 @@
                 </p>
             </a>
 
-            <div class="block bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50 relative overflow-hidden opacity-75 grayscale hover:grayscale-0 transition duration-500 no-select">
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-4xl">🥦</span>
-                    <span class="text-[10px] bg-slate-700 px-2 py-1 rounded text-slate-400 border border-slate-600">SOON</span>
+            <a href="food.html" class="block bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-green-500 transition duration-300 card-hover group relative overflow-hidden backdrop-blur-sm no-select">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-600/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <div class="flex items-center justify-between mb-4 relative z-10">
+                    <span class="text-4xl filter drop-shadow-lg">🥦</span>
+                    <span class="bg-green-600 text-white text-[10px] font-bold px-2 py-1 rounded-full tracking-wide shadow-lg shadow-green-500/30">SAVE $$</span>
                 </div>
-                <h3 class="text-lg font-bold mb-2 text-slate-300">Pantry Chef</h3>
-                <p class="text-slate-500 text-sm">
-                    Input 3 ingredients you have. Get a recipe. Don't order takeout tonight.
+                <h3 class="text-lg font-bold mb-2 text-white group-hover:text-green-300 transition relative z-10">Pantry Chef</h3>
+                <p class="text-slate-400 text-sm leading-relaxed relative z-10">
+                    What's for dinner? Input 3 ingredients you have. Get a recipe instantly.
                 </p>
-            </div>
+            </a>
 
-            <div class="block bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50 relative overflow-hidden opacity-75 grayscale hover:grayscale-0 transition duration-500 no-select">
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-4xl">🎁</span>
-                    <span class="text-[10px] bg-slate-700 px-2 py-1 rounded text-slate-400 border border-slate-600">SOON</span>
+            <a href="gift.html" class="block bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-purple-500 transition duration-300 card-hover group relative overflow-hidden backdrop-blur-sm no-select">
+                <div class="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <div class="flex items-center justify-between mb-4 relative z-10">
+                    <span class="text-4xl filter drop-shadow-lg">🎁</span>
                 </div>
-                <h3 class="text-lg font-bold mb-2 text-slate-300">Gift Finder</h3>
-                <p class="text-slate-500 text-sm">
+                <h3 class="text-lg font-bold mb-2 text-white group-hover:text-purple-300 transition relative z-10">Gift Finder</h3>
+                <p class="text-slate-400 text-sm leading-relaxed relative z-10">
                     For Mom, Him, or Her. Find the perfect Amazon gift without the stress.
                 </p>
-            </div>
+            </a>
 
-            <div class="block bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50 relative overflow-hidden opacity-75 grayscale hover:grayscale-0 transition duration-500 no-select">
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-4xl">🧙‍♂️</span>
-                    <span class="text-[10px] bg-slate-700 px-2 py-1 rounded text-slate-400 border border-slate-600">SOON</span>
+            <a href="names.html" class="block bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-blue-500 transition duration-300 card-hover group relative overflow-hidden backdrop-blur-sm no-select">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <div class="flex items-center justify-between mb-4 relative z-10">
+                    <span class="text-4xl filter drop-shadow-lg">🧙‍♂️</span>
                 </div>
-                <h3 class="text-lg font-bold mb-2 text-slate-300">Name Generator</h3>
-                <p class="text-slate-500 text-sm">
-                    DnD characters, Startup names, or Pet names. Generate thousands instantly.
+                <h3 class="text-lg font-bold mb-2 text-white group-hover:text-blue-300 transition relative z-10">Name Generator</h3>
+                <p class="text-slate-400 text-sm leading-relaxed relative z-10">
+                    DnD characters, Startups, or Pets. Generate unique names instantly.
                 </p>
-            </div>
+            </a>
             
-             <div class="block bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50 relative overflow-hidden opacity-75 grayscale hover:grayscale-0 transition duration-500 no-select">
-                <div class="flex items-center justify-between mb-4">
-                    <span class="text-4xl">✅</span>
-                    <span class="text-[10px] bg-slate-700 px-2 py-1 rounded text-slate-400 border border-slate-600">SOON</span>
+             <a href="priority.html" class="block bg-slate-800/50 rounded-2xl p-6 border border-slate-700 hover:border-teal-500 transition duration-300 card-hover group relative overflow-hidden backdrop-blur-sm no-select">
+                <div class="absolute inset-0 bg-gradient-to-br from-teal-600/10 to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                <div class="flex items-center justify-between mb-4 relative z-10">
+                    <span class="text-4xl filter drop-shadow-lg">✅</span>
                 </div>
-                <h3 class="text-lg font-bold mb-2 text-slate-300">Priority Helper</h3>
-                <p class="text-slate-500 text-sm">
+                <h3 class="text-lg font-bold mb-2 text-white group-hover:text-teal-300 transition relative z-10">Priority Helper</h3>
+                <p class="text-slate-400 text-sm leading-relaxed relative z-10">
                     Overwhelmed? Use the Eisenhower Matrix to decide what to do FIRST.
                 </p>
-            </div>
+            </a>
 
         </div>
     </main>
 
     <footer class="text-center text-slate-600 py-10 border-t border-slate-800 text-sm bg-slate-900">
+        <div class="flex justify-center gap-6 mb-6 text-slate-500">
+            <a href="privacy.html" class="hover:text-slate-300 transition">Privacy Policy</a>
+            <span class="text-slate-700">|</span>
+            <a href="terms.html" class="hover:text-slate-300 transition">Terms of Service</a>
+        </div>
+
         <p class="mb-3 font-medium text-slate-500 tracking-wide">&copy; 2026 PickForMe.help</p>
         <p class="text-xs max-w-md mx-auto px-6 leading-relaxed text-slate-600">
             Helping the world decide better.<br>
