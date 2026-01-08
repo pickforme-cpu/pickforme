@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Priority Helper | PickForMe.help</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .animate-pop { animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes pop { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        /* 自定义切换开关样式 */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #14b8a6; /* teal-500 */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #14b8a6; /* teal-500 */
+        }
+        * { -webkit-tap-highlight-color: transparent; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-50 min-h-screen font-sans flex flex-col selection:bg-teal-500 selection:text-white">
+
+    <nav class="w-full p-4 md:p-6 border-b border-slate-800 bg-slate-900/95 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition group">
+                <span class="group-hover:-translate-x-1 transition-transform">←</span> 
+                <span class="font-bold">PickForMe<span class="text-indigo-400">.help</span></span>
+            </a>
+            <span class="text-xs font-bold text-teal-500 border border-teal-500/30 px-2 py-1 rounded bg-teal-500/10">PRIORITY</span>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-4 text-center max-w-xl mx-auto w-full">
+        
+        <div class="mb-8 mt-4">
+            <span class="text-6xl mb-4 block filter drop-shadow-lg">✅</span>
+            <h2 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+                Overwhelmed? <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-cyan-400">Focus.</span>
+            </h2>
+            <p class="text-slate-400 text-lg">
+                Use the Eisenhower Matrix to decide what to do FIRST.
+            </p>
+        </div>
+
+        <div class="w-full bg-slate-800 p-6 rounded-3xl shadow-xl border border-slate-700 mb-8">
+            
+            <div class="mb-6">
+                <label class="block text-left text-slate-400 text-xs uppercase tracking-wide mb-2 font-bold ml-1">Task Name</label>
+                <input type="text" id="taskInput" placeholder="e.g. Answer emails, Call Mom..." class="w-full bg-slate-900 border border-slate-600 rounded-xl p-4 text-white focus:ring-2 focus:ring-teal-500 outline-none transition placeholder-slate-600 text-lg">
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+                    <span class="font-bold text-slate-300">🔥 Is it Urgent?</span>
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="urgent" id="urgentToggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-slate-600 transition-all duration-300 right-6"/>
+                        <label for="urgentToggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-700 cursor-pointer transition-colors duration-300"></label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex justify-between items-center">
+                    <span class="font-bold text-slate-300">⭐ Is it Important?</span>
+                    <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input type="checkbox" name="important" id="importantToggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-slate-600 transition-all duration-300 right-6"/>
+                        <label for="importantToggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-slate-700 cursor-pointer transition-colors duration-300"></label>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="analyzeTask()" class="w-full bg-teal-600 hover:bg-teal-500 text-white font-bold py-4 rounded-xl text-lg transition shadow-lg shadow-teal-500/20 active:scale-95 flex justify-center items-center gap-2">
+                <span>🚀 Analyze & Decide</span>
+            </button>
+        </div>
+
+        <div id="resultCard" class="hidden w-full p-8 rounded-3xl border relative animate-pop shadow-2xl mb-8 transition-colors duration-500">
+            <div id="resultBadge" class="absolute -top-4 left-1/2 transform -translate-x-1/2 rounded-full px-6 py-1 text-sm uppercase tracking-widest font-bold shadow-lg border">
+                DO IT NOW
+            </div>
+            
+            <h3 id="actionTitle" class="text-3xl md:text-4xl font-extrabold mb-4 text-white leading-tight mt-2">Do First</h3>
+            <p id="actionDesc" class="text-white/90 text-lg leading-relaxed font-medium">
+                This is urgent and important. Stop procrastinating and get it done immediately.
+            </p>
+        </div>
+
+    </main>
+
+    <footer class="text-center text-slate-600 py-8 border-t border-slate-800 text-sm mt-auto bg-slate-900">
+        <div class="mb-6 px-4">
+            <a href="https://www.amazon.com/s?k=productivity+planner&tag=your-tag-20" target="_blank" class="inline-flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-teal-400 border border-slate-700 hover:border-teal-500 px-4 py-2 rounded-full transition text-xs font-bold">
+                📒 Get Organized: Best Productivity Planners
+            </a>
+        </div>
+        
+        <p class="mb-2 font-medium text-slate-500">&copy; 2026 PickForMe.help</p>
+        <p class="text-xs max-w-md mx-auto px-4 leading-relaxed opacity-70">
+            Based on the Eisenhower Matrix.<br>
+            As an Amazon Associate we earn from qualifying purchases.
+        </p>
+    </footer>
+
+    <script>
+        function analyzeTask() {
+            const isUrgent = document.getElementById('urgentToggle').checked;
+            const isImportant = document.getElementById('importantToggle').checked;
+            const taskName = document.getElementById('taskInput').value;
+
+            const card = document.getElementById('resultCard');
+            const badge = document.getElementById('resultBadge');
+            const title = document.getElementById('actionTitle');
+            const desc = document.getElementById('actionDesc');
+
+            // 隐藏并重置动画
+            card.classList.add('hidden');
+            card.classList.remove('animate-pop');
+
+            // 艾森豪威尔矩阵逻辑
+            let result = {};
+
+            if (isUrgent && isImportant) {
+                // Q1: Do First (重要且紧急)
+                result = {
+                    title: "DO IT NOW",
+                    desc: taskName ? `"${taskName}" cannot wait. Stop scrolling and do it.` : "This cannot wait. Stop planning and start doing.",
+                    colorClass: "bg-red-600",
+                    borderClass: "border-red-400",
+                    badgeColor: "bg-red-800 text-red-200 border-red-500"
+                };
+            } else if (!isUrgent && isImportant) {
+                // Q2: Schedule (重要不紧急) - 这是最高效的区域
+                result = {
+                    title: "SCHEDULE IT",
+                    desc: taskName ? `"${taskName}" is key to your goals. Put it on your calendar for later.` : "This is key to your long-term goals. Open your calendar and block time for it.",
+                    colorClass: "bg-blue-600",
+                    borderClass: "border-blue-400",
+                    badgeColor: "bg-blue-800 text-blue-200 border-blue-500"
+                };
+            } else if (isUrgent && !isImportant) {
+                // Q3: Delegate (紧急不重要)
+                result = {
+                    title: "DELEGATE IT",
+                    desc: "Can someone else do this? If not, do it quickly but don't spend too much energy on it.",
+                    colorClass: "bg-yellow-600",
+                    borderClass: "border-yellow-400",
+                    badgeColor: "bg-yellow-800 text-yellow-200 border-yellow-500"
+                };
+            } else {
+                // Q4: Delete (不紧急不重要)
+                result = {
+                    title: "DELETE IT",
+                    desc: "Why are you even worrying about this? It's a distraction. Ignore it.",
+                    colorClass: "bg-slate-600",
+                    borderClass: "border-slate-400",
+                    badgeColor: "bg-slate-800 text-slate-300 border-slate-500"
+                };
+            }
+
+            // 应用样式和内容
+            title.textContent = result.title;
+            desc.textContent = result.desc;
+            badge.textContent = isUrgent && isImportant ? "CRITICAL" : "ADVICE";
+            
+            // 清除旧的颜色类
+            card.className = `hidden w-full p-8 rounded-3xl border relative shadow-2xl mb-8 transition-colors duration-500 ${result.colorClass} ${result.borderClass}`;
+            badge.className = `absolute -top-4 left-1/2 transform -translate-x-1/2 rounded-full px-6 py-1 text-xs uppercase tracking-widest font-bold shadow-lg border ${result.badgeColor}`;
+
+            // 显示结果
+            setTimeout(() => {
+                card.classList.remove('hidden');
+                card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                void card.offsetWidth; 
+                card.classList.add('animate-pop');
+            }, 100);
+        }
+    </script>
+</body>
+</html>
